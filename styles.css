@@ -21,6 +21,8 @@ header {
   left: 0;
   right: 0;
   z-index: 104;
+  height: 20px;
+  max-height: 20px;
 }
 
 h1 {
@@ -31,12 +33,13 @@ h1 {
 .pictures {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-left: 0px;
+  transition: margin-left 0.5s;
 }
 
 .picture {
   position: relative;
   overflow-y: hidden;
-  /* padding: var(--boxpad); */
 }
 
 .picture img {
@@ -78,18 +81,24 @@ img {
   background-color: black;
   text-transform: uppercase;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  transform: translateY(-100%);
+  grid-template-columns: 1fr;
+  transform: translateX(-100%);
   z-index: 50;
-  position: absolute;
+  position: fixed;
+  top: 36px;
   left: 0;
-  right: 0;
+  bottom: 0;
   transition: transform 0.5s;
 }
 
 .menu-open .color-mode {
-  transform: translateY(0);
+  transform: translateX(0);
+}
+
+.menu-open .pictures {
+  margin-left: 300px;
+  width: calc(100vw - 300px);
+  transition: margin-left 0.5s;
 }
 
 .input-label-container,
@@ -112,6 +121,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 }
 
 label span {
@@ -149,14 +159,7 @@ input[type="radio"],
 }
 
 @keyframes pulse {
-  /* 25% {
-    background-color: hotpink;
-  } */
   50% {
-    /* background-color: yellow; */
     transform: scale(1.2);
   }
-  /* 75% {
-    background-color: slateblue;
-  } */
 }
